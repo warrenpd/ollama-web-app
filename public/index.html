@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ollama Web App</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <button id="newChat" class="primary">+ New chat</button>
+    <ul id="chatList"></ul>
+    <div class="model-pick">
+      <label for="model">Model</label>
+      <select id="model"></select>
+      <div id="ollamaStatus" class="muted"></div>
+    </div>
+  </aside>
+
+  <main class="chat">
+    <header class="chat-head">
+      <h1 id="chatTitle">New chat</h1>
+      <button id="toggleStats" class="ghost">Stats</button>
+    </header>
+    <div id="messages"></div>
+    <form id="composer">
+      <textarea id="input" rows="2" placeholder="Message Mistral…  (Enter to send, Shift+Enter for newline)"></textarea>
+      <button id="send" class="primary" type="submit">Send</button>
+      <button id="stop" class="danger" type="button" hidden>Stop</button>
+    </form>
+  </main>
+
+  <aside class="stats" id="statsPanel">
+    <section>
+      <h2>Live system</h2>
+      <div class="meter"><span>System RAM</span><b id="sysMem">–</b><div class="bar"><i id="sysMemBar"></i></div></div>
+      <div class="meter"><span>System CPU</span><b id="sysCpu">–</b><div class="bar"><i id="sysCpuBar"></i></div></div>
+      <dl>
+        <dt>Ollama RSS</dt><dd id="olRss">–</dd>
+        <dt>Ollama CPU</dt><dd id="olCpu">–</dd>
+        <dt>Load avg</dt><dd id="loadAvg">–</dd>
+      </dl>
+      <h3>Loaded models</h3>
+      <div id="loadedModels" class="muted">none</div>
+    </section>
+
+    <section>
+      <h2>This chat — totals</h2>
+      <dl id="chatTotals"></dl>
+    </section>
+
+    <section>
+      <h2>Last response</h2>
+      <dl id="lastStats"><dt class="muted">No responses yet</dt></dl>
+    </section>
+  </aside>
+
+  <script src="/app.js"></script>
+</body>
+</html>
